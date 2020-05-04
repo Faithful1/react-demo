@@ -15,13 +15,12 @@ phases:
       - echo Installing dependencies...
       - yarn
       - echo installing app dependencies
-      - npm install
   build:
     commands:
-      - echo Testing...
-      - npm run test
-      # - echo Building...
-      # - npm run build
+      # - echo Testing...
+      # - npm run test
+      - echo Building...
+      - npm run build
 artifacts:
   files:
     - "**/*"
