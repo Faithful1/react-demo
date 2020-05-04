@@ -1,4 +1,4 @@
-A simple react app for testing CICD pipeline using AWS CodePipeline
+A simple react app for testing CICD pipeline using AWS CodePipeline. Here We deploy a react app using s3 bucket
 
 ## Available Scripts
 
@@ -15,3 +15,5 @@ You will also see any lint errors in the console.
 ### `yarn test`
 
 Launches the test runner in the interactive watch mode
+
+Make sure to select s3 bucket as your code deploy site
