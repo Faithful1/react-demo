@@ -20,10 +20,10 @@ phases:
     commands:
       - echo Testing...
       - npm run test
-      - echo Building...
-      - npm run build
+      # - echo Building...
+      # - npm run build
 artifacts:
   files:
     - "**/*"
   discard-paths: no
-  base-directory: build
+  base-directory: public
