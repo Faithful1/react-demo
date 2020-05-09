@@ -3,7 +3,7 @@
 View my Demo site here
 https://carsome-demo-bucket.s3-ap-southeast-1.amazonaws.com/index.html
 
-## Description
+## Descriptions
 
 A simple react app for testing CICD pipeline using AWS CodePipeline. Here We deploy a react app using s3 bucket
 
