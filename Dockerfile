@@ -5,12 +5,12 @@ ENTRYPOINT ["/sbin/tini", "--"]
 
 WORKDIR /code
 
-EXPOSE 3000
-
-USER node
-
 ADD run_app.sh /
 
 RUN chmod +x /run_app.sh
+
+EXPOSE 3000
+
+USER node
 
 CMD [ "./run_app.sh" ]
