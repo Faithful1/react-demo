@@ -1,0 +1,8 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker pull node:10-alpine
+  - docker build -t docker-demo .
