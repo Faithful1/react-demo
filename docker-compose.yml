@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  nginx:
+    image: jwilder/nginx-proxy
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+  front:
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - ./:/code
+    environment:
+      - VIRTUAL_HOST=galf.lh
+      - VIRTUAL_PORT=3000
