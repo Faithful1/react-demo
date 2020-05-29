@@ -15,6 +15,5 @@ EXPOSE 3000
 
 USER node
 
-RUN npm run test
-
-CMD [ "./run_app.sh" ]
+CMD [ "npm" "start" ]
+# CMD [ "./run_app.sh" ]

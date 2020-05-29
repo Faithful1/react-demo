@@ -8,6 +8,7 @@ before_install:
 
 install:
   - docker build -t docker-demo .
-# script:
-#   - docker run -p 3000:3000 docker-demo:latest
+
+script:
+  - docker run --rm docker-demo npm run test
 # - docker run --rm  docker-demo npm run lint
