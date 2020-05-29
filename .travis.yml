@@ -5,4 +5,10 @@ services:
 
 before_install:
   - docker pull node:10-alpine
+
+install:
   - docker build -t docker-demo .
+
+script:
+  - docker-run --rm docker-demo npm run test
+  # - docker run --rm  docker-demo npm run lint

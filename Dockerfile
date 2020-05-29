@@ -13,4 +13,5 @@ EXPOSE 3000
 
 USER node
 
-CMD [ "./run_app.sh" ]
+CMD [ "npm" "start" ]
+# CMD [ "./run_app.sh" ]
