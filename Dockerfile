@@ -9,7 +9,7 @@ COPY . /code
 
 ADD run_app.sh /
 
-RUN chmod +x /run_app.sh
+RUN chmod +x /run_app.sh && npm install
 
 EXPOSE 3000
 
