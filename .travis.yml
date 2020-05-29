@@ -4,8 +4,11 @@ services:
   - docker
 
 env:
-  - NPM_TARGET=test
-  - NPM_TARGET=start
+  - NODE_VERSION=8-alpine
+  - NODE_VERSION=10-alpine
+
+  # - NPM_TARGET=test
+  # - NPM_TARGET=start
 
 before_install:
   - docker pull node:10-alpine
@@ -14,13 +17,19 @@ install:
   - docker build -t docker-demo .
 
 script:
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker build -t node:$NODE_VERSION --build-arg NODE_IMAGE="{NODE_VERSION}" .
+  - docker images
+  - docker tag node:$NODE_VERSION $DOCKER_USERNAME/docker-demo:$NODE_VERSION-$(git rev-parse HEAD)
   - docker run --rm docker-demo npm run $NPM_TARGET
+  - docker push
+# make sure to create repository on dockerhub hence wont work
 
 after_success:
   - set -x -v;
     set -e;
     if [ "NPM_TARGET" = "test"]; then
-    - docker tag docker-demo docker-demo:$(git rev-parse HEAD)
+    docker tag docker-demo docker-demo:$(git rev-parse HEAD)
     else
     echo "skipping docker tag"
     fi;
