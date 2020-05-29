@@ -14,4 +14,4 @@ script:
 # - docker run --rm  docker-demo npm run lint
 
 after_success:
-  - docker tag docker-demo docker-demo:(git rev-parse HEAD)
+  - docker tag docker-demo docker-demo:$(git rev-parse HEAD)
