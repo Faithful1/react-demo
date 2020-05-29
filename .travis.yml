@@ -5,7 +5,7 @@ services:
 
 env:
   - NPM_TARGET=test
-  # - NPM_TARGET=coverage
+  - NPM_TARGET=start
 
 before_install:
   - docker pull node:10-alpine
