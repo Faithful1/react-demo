@@ -5,12 +5,15 @@ ENTRYPOINT ["/sbin/tini", "--"]
 
 WORKDIR /code
 
+COPY . /code
+
 ADD run_app.sh /
 
-RUN chmod +x /run_app.sh
+RUN chmod +x /run_app.sh && npm install
 
 EXPOSE 3000
 
 USER node
 
-CMD [ "./run_app.sh" ]
+CMD [ "npm" "start" ]
+# CMD [ "./run_app.sh" ]
