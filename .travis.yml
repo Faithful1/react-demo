@@ -10,5 +10,5 @@ install:
   - docker build -t docker-demo .
 
 script:
-  - docker run --rm docker-demo npm run test
+  - docker run docker-demo npm run test
   # - docker run --rm  docker-demo npm run lint
