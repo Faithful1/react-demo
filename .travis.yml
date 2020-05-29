@@ -21,17 +21,28 @@ script:
   - docker build -t node:$NODE_VERSION --build-arg NODE_IMAGE="{NODE_VERSION}" .
   - docker images
   - docker tag node:$NODE_VERSION $DOCKER_USERNAME/docker-demo:$NODE_VERSION-$(git rev-parse HEAD)
-  - docker run --rm docker-demo npm run $NPM_TARGET
-  - docker push
+  - docker push $DOCKER_USERNAME/docker-demo:$NODE_VERSION-$(git rev-parse HEAD)
 # make sure to create repository on dockerhub hence wont work
 
-after_success:
-  - set -x -v;
-    set -e;
-    if [ "NPM_TARGET" = "test"]; then
-    docker tag docker-demo docker-demo:$(git rev-parse HEAD)
-    else
-    echo "skipping docker tag"
-    fi;
-    docker images;
-    set +x +v;
+stages:
+  - test
+  - npm-targets
+
+jobs:
+  include:
+    - stage: npm-targets
+      name: "Test 10-alpine"
+      install: skip
+      script:
+        - docker run --rm $DOCKER_USERNAME/docker-demo:$NODE_VERSION-$(git rev-parse HEAD)
+      env:
+        - NODE_VERSION=10-alpine
+        - NPM_TARGET=test
+    - stage: npm-targets
+      name: "Test 10-alpine"
+      install: skip
+      script:
+        - docker run --rm $DOCKER_USERNAME/docker-demo:$NODE_VERSION-$(git rev-parse HEAD)
+      env:
+        - NODE_VERSION=10-alpine
+        - NPM_TARGET=start
